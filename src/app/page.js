@@ -1,3 +1,7 @@
 export default function Home() {
-  return <p>Hi! nextjs@14</p>;
+  return (
+    <div style={{ textAlign: "center" }}>
+      <p>Hi! nextjs@14 cicd</p>
+    </div>
+  );
 }
