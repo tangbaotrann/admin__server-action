@@ -4,10 +4,8 @@ function LoginPage() {
   return (
     <div style={{ textAlign: "center" }}>
       <h1>Login page!!</h1>
+      <h1>Login page!!</h1>
 
-      <p>--- end ---</p>
-      <p>--- end ---</p>
-      <p>--- end ---</p>
       <p>--- end ---</p>
     </div>
   );
