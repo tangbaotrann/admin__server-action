@@ -1,0 +1,24 @@
+:root {
+  --bg: #151c2c;
+  --bg-soft: #182237;
+  --text: #ffffff;
+  --text-soft: #b7bac1;
+  --sidebar-hover-soft: #2e374a;
+  --search-input: #2e374a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

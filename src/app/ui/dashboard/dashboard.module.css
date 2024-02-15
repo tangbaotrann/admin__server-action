@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+}
+
+.sidebar {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--bg-soft);
+}
+
+.navbar {
+    flex: 4;
+    padding: 20px;
+}
