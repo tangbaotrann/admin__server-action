@@ -1,0 +1,44 @@
+.cards {
+    display: flex;
+    flex: 1;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: var(--bg-soft);
+}
+
+.cards:hover {
+    background-color: var(--sidebar-hover-soft);
+    cursor: pointer;
+}
+
+.detail {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.number {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.positive {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.negative {
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+}
+
+.positiveNumber {
+    color: lime;
+}

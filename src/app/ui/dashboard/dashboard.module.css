@@ -1,5 +1,6 @@
 .wrapper {
     display: flex;
+    gap: 20px;
 }
 
 .sidebar {
@@ -10,5 +11,29 @@
 
 .navbar {
     flex: 4;
-    padding: 20px;
+}
+
+/* Card */
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    gap: 20px;
+}
+
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rightbar {
+    flex: 1;
 }

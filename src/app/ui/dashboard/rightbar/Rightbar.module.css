@@ -1,0 +1,72 @@
+.container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rightbar {
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--bg-soft);
+}
+
+.main {
+    position: relative;
+}
+
+.bgImage {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.image {
+    width: 62px;
+    height: 62px;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.texts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btnWatch {
+    display: flex;
+    align-items: center;
+    background-color: aqua;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    padding: 6px;
+    color: var(--text);
+    gap: 2px;
+}
+
+.btnWatch:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.textIcon,
+.subtitle {
+    color: var(--text-soft);
+}
+
+.note {
+    font-weight: 600;
+}
+
+.desc {
+    font-size: 12px;
+    text-align: justify;
+}

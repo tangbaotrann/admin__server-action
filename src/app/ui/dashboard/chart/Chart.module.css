@@ -1,0 +1,14 @@
+.charts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 450px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--bg-soft);
+}
+
+.title {
+    font-weight: 300;
+    color: var(--text-soft);
+}

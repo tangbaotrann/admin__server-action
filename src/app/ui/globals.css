@@ -5,6 +5,9 @@
   --text-soft: #b7bac1;
   --sidebar-hover-soft: #2e374a;
   --search-input: #2e374a;
+  --status-done: #afd6ee75;
+  --status-pending: #f7cb7375;
+  --status-cancelled: #f7737375;
 }
 
 * {
