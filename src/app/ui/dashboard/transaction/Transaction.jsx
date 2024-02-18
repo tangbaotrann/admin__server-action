@@ -1,4 +1,4 @@
-import styles from "./transaction.module.css";
+import styles from "./Transaction.module.css";
 import UserItem from "@/app/components/UserItem/UserItem";
 
 function Transaction() {

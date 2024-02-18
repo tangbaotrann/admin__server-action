@@ -1,4 +1,4 @@
-import styles from "@/app/ui/dashboard/transaction/transaction.module.css";
+import styles from "@/app/ui/dashboard/transaction/Transaction.module.css";
 import Image from "@/app/components/Image/Image";
 
 function UserItem({ username, status }) {
