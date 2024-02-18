@@ -16,7 +16,7 @@ function Dashboard() {
 
         <div className={styles.content}>
           <Transaction />
-          <Chart />
+          {/* <Chart /> */}
         </div>
       </div>
 

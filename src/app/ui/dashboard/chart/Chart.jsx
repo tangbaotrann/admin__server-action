@@ -1,16 +1,16 @@
-"use client";
+// "use client";
 
-import styles from "./Chart.module.css";
-import ChartLineItem from "@/app/components/ChartLineItem/ChartLineItem";
+// import styles from "./Chart.module.css";
+// import ChartLineItem from "@/app/components/ChartLineItem/ChartLineItem";
 
-function Chart() {
-  return (
-    <div className={styles.charts}>
-      <h2 className={styles.title}>Weekly Recap</h2>
+// function Chart() {
+//   return (
+//     <div className={styles.charts}>
+//       <h2 className={styles.title}>Weekly Recap</h2>
 
-      <ChartLineItem />
-    </div>
-  );
-}
+//       <ChartLineItem />
+//     </div>
+//   );
+// }
 
-export default Chart;
+// export default Chart;
