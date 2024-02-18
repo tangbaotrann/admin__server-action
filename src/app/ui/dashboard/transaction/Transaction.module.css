@@ -1,0 +1,48 @@
+.transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 6px;
+    background-color: var(--bg-soft);
+}
+
+.title {
+    font-weight: 300;
+    color: var(--text-soft);
+}
+
+.table td {
+    padding: 10px;
+}
+
+.username {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.userImage {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status {
+    padding: 4px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.done {
+    background-color: var(--status-done);
+}
+
+.pending {
+    background-color: var(--status-pending);
+}
+
+.cancelled {
+    background-color: var(--status-cancelled);
+}
