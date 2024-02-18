@@ -1,5 +1,5 @@
 import styles from "./Transaction.module.css";
-import UserItem from "@/app/components/UserItem/UserItem";
+import UserItemDashboard from "@/app/components/UserItemDashboard/UserItemDashboard";
 
 function Transaction() {
   return (
@@ -17,13 +17,13 @@ function Transaction() {
         </thead>
         <tbody>
           <tr>
-            <UserItem username="Jon" status="Done" />
+            <UserItemDashboard username="Jon" status="Done" />
           </tr>
           <tr>
-            <UserItem username="Hanni" status="Pending" />
+            <UserItemDashboard username="Hanni" status="Pending" />
           </tr>
           <tr>
-            <UserItem username="Jenie" status="Cancelled" />
+            <UserItemDashboard username="Jenie" status="Cancelled" />
           </tr>
         </tbody>
       </table>
