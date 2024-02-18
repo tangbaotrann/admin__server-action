@@ -1,4 +1,4 @@
-import styles from "@/app/ui/dashboard/rightbar/rightbar.module.css";
+import styles from "@/app/ui/dashboard/rightbar/Rightbar.module.css";
 import Image from "../Image/Image";
 
 function BoxRightItem({

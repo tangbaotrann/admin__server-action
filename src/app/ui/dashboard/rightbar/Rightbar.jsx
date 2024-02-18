@@ -1,6 +1,6 @@
 import { MdPlayCircleFilled, MdReadMore } from "react-icons/md";
 
-import styles from "./rightbar.module.css";
+import styles from "./Rightbar.module.css";
 import BoxRightItem from "@/app/components/BoxRightItem/BoxRightItem";
 
 function Rightbar() {
