@@ -5,6 +5,16 @@
     margin-right: 20px;
 }
 
+.back {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.back:hover {
+    opacity: 0.8;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -19,18 +29,8 @@
     gap: 12px;
 }
 
-.btnSubmit {
+.btnAddHere {
     padding: 10px;
     color: var(--text);
     background-color: teal;
-}
-
-.back {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.back:hover {
-    opacity: 0.8;
 }
