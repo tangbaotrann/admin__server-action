@@ -22,7 +22,7 @@ function UserItemUsers() {
       <td>passive</td>
       <td>
         <div className={styles.actions}>
-          <Link href="/dashboard/users/id">
+          <Link href="/dashboard">
             <Button className={styles.viewBtn}>View</Button>
           </Link>
           <Button className={styles.deleteBtn}>Delete</Button>
