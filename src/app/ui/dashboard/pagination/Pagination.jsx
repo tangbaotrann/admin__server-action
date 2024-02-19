@@ -7,7 +7,7 @@ function Pagination() {
       <Button disabled={true} className={styles.previousBtn}>
         Previous
       </Button>
-      <Button>Next</Button>
+      <Button className={styles.nextBtn}>Next</Button>
     </div>
   );
 }
