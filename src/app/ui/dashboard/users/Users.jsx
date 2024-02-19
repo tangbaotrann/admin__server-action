@@ -11,7 +11,7 @@ function Users() {
     <div className={styles.users}>
       <div className={styles.top}>
         <Search placeholder="Search for user..." />
-        <button className={styles.btnAddNew}>Add new</button>
+        <Button className={styles.btnAddNew}>Add new</Button>
       </div>
 
       {/* Table */}

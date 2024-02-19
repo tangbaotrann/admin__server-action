@@ -5,5 +5,10 @@
 }
 
 .previousBtn {
+    padding: 6px;
     cursor: not-allowed !important;
+}
+
+.nextBtn {
+    padding: 6px;
 }
