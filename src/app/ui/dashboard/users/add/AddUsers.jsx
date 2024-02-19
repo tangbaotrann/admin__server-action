@@ -46,11 +46,18 @@ function AddUsers() {
             placeholder="Enter phone..."
           />
           <Select id="role" name="role" placeholder="Choose a role...">
-            <Option value="isAdmin">Is Admin?</Option>
-            <Option value="isUser">Is User?</Option>
+            <Option value="isAdmin" selected>
+              Is Admin?
+            </Option>
+            <Option value={true}>Yes</Option>
+            <Option value={false}>No</Option>
           </Select>
           <Select id="role" name="role" placeholder="Choose a status">
-            <Option value="isActive">Is Active?</Option>
+            <Option value="isActive" selected>
+              Is Active?
+            </Option>
+            <Option value={true}>Yes</Option>
+            <Option value={false}>No</Option>
           </Select>
         </div>
 
