@@ -1,6 +1,7 @@
 import styles from "@/app/ui/dashboard/users/Users.module.css";
 import Button from "@/app/components/Button/Button";
 import Image from "../Image/Image";
+import Link from "next/link";
 
 function UserItemUsers() {
   return (
@@ -21,7 +22,9 @@ function UserItemUsers() {
       <td>passive</td>
       <td>
         <div className={styles.actions}>
-          <Button className={styles.viewBtn}>View</Button>
+          <Link href="/dashboard/users/id">
+            <Button className={styles.viewBtn}>View</Button>
+          </Link>
           <Button className={styles.deleteBtn}>Delete</Button>
         </div>
       </td>

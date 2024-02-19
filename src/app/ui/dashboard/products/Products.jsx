@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import styles from "./Products.module.css";
 import Button from "@/app/components/Button/Button";
 import Search from "@/app/components/Search/Search";
@@ -11,7 +13,10 @@ function Products() {
     <div className={styles.products}>
       <div className={styles.top}>
         <Search placeholder="Search for a product..." />
-        <Button className={styles.btnAddNewProd}>Add new</Button>
+
+        <Link href="/dashboard/products/add">
+          <Button className={styles.btnAddNewProd}>Add new</Button>
+        </Link>
       </div>
 
       {/* table */}
