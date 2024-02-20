@@ -1,6 +1,7 @@
 import styles from "@/app/ui/dashboard/products/Products.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
+import Link from "next/link";
 
 function ProductItem() {
   return (
@@ -21,7 +22,9 @@ function ProductItem() {
       <td>34</td>
       <td>
         <div className={styles.actions}>
-          <Button className={styles.viewBtn}>View</Button>
+          <Link href="/dashboard/products/id">
+            <Button className={styles.viewBtn}>View</Button>
+          </Link>
           <Button className={styles.deleteBtn}>Delete</Button>
         </div>
       </td>
