@@ -9,9 +9,9 @@ import UserItemUsers from "@/app/components/UserItemUsers/UserItemUsers";
 import Pagination from "../pagination/Pagination";
 import { fetchUsers } from "@/app/utils/data";
 
-async function Users() {
-  const users = await fetchUsers();
-  console.log("[USERS] -->", users);
+async function Users({ qSearch }) {
+  const users = await fetchUsers(qSearch);
+
   return (
     <div className={styles.users}>
       <div className={styles.top}>
