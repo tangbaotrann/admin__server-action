@@ -31,9 +31,7 @@ function ProductDetail() {
           <Form action="" className={styles.form}>
             <Input type="text" name="title" placeholder="Enter title..." />
             <Select name="category" placeholder="Choose a category">
-              <Option value="generate" selected>
-                Choose a category
-              </Option>
+              <Option value="generate">Choose a category</Option>
               <Option value="kitchen">Kitchen</Option>
               <Option value="phone">Phone</Option>
               <Option value="computer">Computer</Option>

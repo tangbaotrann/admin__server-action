@@ -25,9 +25,7 @@ function AddProducts() {
             placeholder="Enter title..."
           />
           <Select name="category" className={styles.select}>
-            <Option value="general" selected>
-              Choose a category
-            </Option>
+            <Option value="general">Choose a category</Option>
             <Option value="kitchen">Kitchen</Option>
             <Option value="phone">Phone</Option>
             <Option value="computer">Computer</Option>
