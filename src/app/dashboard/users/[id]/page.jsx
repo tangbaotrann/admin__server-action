@@ -1,12 +1,7 @@
 import UserDetail from "@/app/ui/dashboard/users/[id]/UserDetail";
 
 function SingleUser() {
-  return (
-    <div>
-      single user
-      <UserDetail />
-    </div>
-  );
+  return <UserDetail />;
 }
 
 export default SingleUser;
