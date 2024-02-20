@@ -1,10 +1,14 @@
 import connectToDB from "./db";
 import { User } from "./models";
 
-const fetchUsers = async () => {
+const fetchUsers = async (qSearch) => {
+  const regex = new RegExp(qSearch);
+
   try {
     await connectToDB();
-    const users = await User.find();
+    const users = await User.find({
+      username: { $regex: regex },
+    });
 
     return users;
   } catch (err) {
