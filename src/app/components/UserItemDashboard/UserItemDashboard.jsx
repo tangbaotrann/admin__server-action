@@ -1,34 +1,39 @@
+import dayjs from "dayjs";
+
 import styles from "@/app/ui/dashboard/transaction/Transaction.module.css";
 import Image from "@/app/components/Image/Image";
 
-function UserItem({ username, status }) {
+function UserItem({ user }) {
   return (
     <>
       <td>
         <div className={styles.username}>
           <Image
-            src="/noavatar.png"
+            src={user.image || "/noavatar.png"}
             alt="user-image"
             className={styles.userImage}
           />
-          {username}
+          {user.username}
         </div>
       </td>
       <td>
         <span
           className={`${styles.status} ${
-            status === "Done"
+            user.status === "Done"
               ? styles.done
-              : status === "Pending"
+              : user.status === "Pending"
               ? styles.pending
               : styles.cancelled
           }`}
         >
-          {status}
+          {user.status}
         </span>
       </td>
-      <td>14/02/2024</td>
-      <td>$3.200</td>
+      <td>
+        {dayjs(user.createdAt).format("DD/MM/YYYY") ||
+          dayjs(new Date()).format("DD/MM/YYYY")}
+      </td>
+      <td>{user.price}</td>
     </>
   );
 }

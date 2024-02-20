@@ -1,6 +1,6 @@
-function Option({ children, value, selected, className }) {
+function Option({ children, value, className }) {
   return (
-    <option value={value} selected={selected} className={className}>
+    <option value={value} className={className}>
       {children}
     </option>
   );

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Link from "next/link";
 
@@ -7,8 +7,11 @@ import Button from "@/app/components/Button/Button";
 import Search from "@/app/components/Search/Search";
 import UserItemUsers from "@/app/components/UserItemUsers/UserItemUsers";
 import Pagination from "../pagination/Pagination";
+import { fetchUsers } from "@/app/utils/data";
 
-function Users() {
+async function Users() {
+  const users = await fetchUsers();
+  console.log("[USERS] -->", users);
   return (
     <div className={styles.users}>
       <div className={styles.top}>
@@ -27,20 +30,17 @@ function Users() {
               <td>Email</td>
               <td>Created at</td>
               <td>Role</td>
-              <td>Action</td>
+              <td>Status</td>
+              <td>Actions</td>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <UserItemUsers />
-            </tr>
-            <tr>
-              <UserItemUsers />
-            </tr>
-            <tr>
-              <UserItemUsers />
-            </tr>
+            {users.map((user) => (
+              <tr key={user._id}>
+                <UserItemUsers user={user} />
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

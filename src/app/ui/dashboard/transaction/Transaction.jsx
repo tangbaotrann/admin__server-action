@@ -1,7 +1,10 @@
 import styles from "./Transaction.module.css";
+import { fetchUsers } from "@/app/utils/data";
 import UserItemDashboard from "@/app/components/UserItemDashboard/UserItemDashboard";
 
-function Transaction() {
+async function Transaction() {
+  const users = await fetchUsers();
+
   return (
     <div className={styles.transactions}>
       <h2 className={styles.title}>Latest Transactions</h2>
@@ -16,15 +19,11 @@ function Transaction() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <UserItemDashboard username="Jon" status="Done" />
-          </tr>
-          <tr>
-            <UserItemDashboard username="Hanni" status="Pending" />
-          </tr>
-          <tr>
-            <UserItemDashboard username="Jenie" status="Cancelled" />
-          </tr>
+          {users.map((user) => (
+            <tr key={user._id}>
+              <UserItemDashboard user={user} />
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
