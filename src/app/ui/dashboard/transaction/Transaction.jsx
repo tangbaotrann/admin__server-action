@@ -3,7 +3,7 @@ import { fetchUsers } from "@/app/utils/data";
 import UserItemDashboard from "@/app/components/UserItemDashboard/UserItemDashboard";
 
 async function Transaction() {
-  const users = await fetchUsers();
+  const { users } = await fetchUsers();
 
   return (
     <div className={styles.transactions}>

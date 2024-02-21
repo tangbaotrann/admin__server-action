@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import styles from "./Products.module.css";
@@ -7,8 +5,14 @@ import Button from "@/app/components/Button/Button";
 import Search from "@/app/components/Search/Search";
 import Pagination from "../pagination/Pagination";
 import ProductItem from "@/app/components/ProductItem/ProductItem";
+import { fetchProducts } from "@/app/utils/data";
 
-function Products() {
+async function Products({ qSearch, pagination }) {
+  const { count, totalPages, products } = await fetchProducts(
+    qSearch,
+    pagination
+  );
+
   return (
     <div className={styles.products}>
       <div className={styles.top}>
@@ -34,17 +38,16 @@ function Products() {
           </thead>
 
           <tbody>
-            <tr>
-              <ProductItem />
-            </tr>
-            <tr>
-              <ProductItem />
-            </tr>
+            {products.map((product) => (
+              <tr key={product._id}>
+                <ProductItem product={product} />
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      <Pagination />
+      <Pagination count={count} totalPages={totalPages} />
     </div>
   );
 }

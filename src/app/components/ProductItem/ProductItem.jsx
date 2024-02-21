@@ -2,24 +2,28 @@ import styles from "@/app/ui/dashboard/products/Products.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
 import Link from "next/link";
+import dayjs from "dayjs";
 
-function ProductItem() {
+function ProductItem({ product }) {
   return (
     <>
       <td>
         <div className={styles.info}>
           <Image
-            src="/noproduct.jpg"
+            src={product.image || "/noproduct.jpg"}
             alt="img-avt"
             className={styles.avatarImage}
           />
-          ios
+          {product.title}
         </div>
       </td>
-      <td>Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
-      <td>$11.1</td>
-      <td>Oct 24 2024</td>
-      <td>34</td>
+      <td>{product.desc}</td>
+      <td>$ {product.price}</td>
+      <td>
+        {dayjs(product.createdAt).format("DD/MM/YYYY") ||
+          dayjs(new Date()).format("DD/MM/YYYY")}
+      </td>
+      <td>{product.stock}</td>
       <td>
         <div className={styles.actions}>
           <Link href="/dashboard/products/id">

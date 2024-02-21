@@ -9,8 +9,8 @@ import UserItemUsers from "@/app/components/UserItemUsers/UserItemUsers";
 import Pagination from "../pagination/Pagination";
 import { fetchUsers } from "@/app/utils/data";
 
-async function Users({ qSearch }) {
-  const users = await fetchUsers(qSearch);
+async function Users({ qSearch, pagination }) {
+  const { count, totalPages, users } = await fetchUsers(qSearch, pagination);
 
   return (
     <div className={styles.users}>
@@ -45,7 +45,7 @@ async function Users({ qSearch }) {
         </table>
       </div>
 
-      <Pagination />
+      <Pagination count={count} totalPages={totalPages} />
     </div>
   );
 }
