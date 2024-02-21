@@ -9,8 +9,12 @@ import Select from "@/app/components/Select/Select";
 import Textarea from "@/app/components/Textarea/Textarea";
 import Input from "@/app/components/Input/Input";
 import Form from "@/app/components/Form/Form";
+import { findByIdProduct } from "@/app/utils/actions";
 
-function ProductDetail() {
+async function ProductDetail({ params }) {
+  const { id } = params;
+  const product = await findByIdProduct(id);
+
   return (
     <div className={styles.container}>
       <Link href="/dashboard/products" className={styles.back}>
@@ -20,28 +24,60 @@ function ProductDetail() {
       <div className={styles.main}>
         <div className={styles.image}>
           <Image
-            src="/noproduct.jpg"
+            src={product.image || "/noproduct.jpg"}
             alt="img-avt"
             className={styles.avatarImage}
           />
-          <span className={styles.name}>Name...</span>
+          <span className={styles.name}>{product.title}</span>
         </div>
 
         <div className={styles.inputs}>
           <Form action="" className={styles.form}>
-            <Input type="text" name="title" placeholder="Enter title..." />
-            <Select name="category" placeholder="Choose a category">
+            <Input
+              type="text"
+              name="title"
+              value={product.title}
+              placeholder="Enter title..."
+            />
+            <Select
+              name="category"
+              defaultValue={product.category}
+              placeholder="Choose a category"
+            >
               <Option value="generate">Choose a category</Option>
-              <Option value="kitchen">Kitchen</Option>
-              <Option value="phone">Phone</Option>
-              <Option value="computer">Computer</Option>
+              <Option value="Kitchen">Kitchen</Option>
+              <Option value="Phone">Phone</Option>
+              <Option value="Computer">Computer</Option>
+              <Option value="Android">Android</Option>
+              <Option value="IOS">IOS</Option>
             </Select>
-            <Input type="number" name="price" placeholder="Enter price..." />
-            <Input type="number" name="stock" placeholder="Enter stock..." />
-            <Input type="text" name="color" placeholder="Enter color..." />
-            <Input type="text" name="size" placeholder="Enter size..." />
+            <Input
+              type="number"
+              name="price"
+              value={product.price}
+              placeholder="Enter price..."
+            />
+            <Input
+              type="number"
+              name="stock"
+              value={product.stock}
+              placeholder="Enter stock..."
+            />
+            <Input
+              type="text"
+              name="color"
+              value={product.color}
+              placeholder="Enter color..."
+            />
+            <Input
+              type="text"
+              name="size"
+              value={product.size}
+              placeholder="Enter size..."
+            />
             <Textarea
               name="description"
+              value={product.desc}
               rows={4}
               placeholder="Enter description..."
             ></Textarea>

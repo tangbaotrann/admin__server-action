@@ -52,6 +52,17 @@ const deleteUser = async (formData) => {
   revalidatePath("/dashboard/users");
 };
 
+const findByIdUser = async (id) => {
+  try {
+    await connectToDB();
+    const user = await User.findById(id);
+
+    return user;
+  } catch (err) {
+    throw new Error("Error find by id failed!");
+  }
+};
+
 // Product
 const addProduct = async (formData) => {
   const { title, category, price, stock, color, size, desc } =
@@ -85,9 +96,7 @@ const deleteProduct = async (formData) => {
 
   try {
     await connectToDB();
-    const prod = await Product.findByIdAndDelete(_id);
-
-    console.log("[PRODUCT DEL] ->", prod);
+    await Product.findByIdAndDelete(_id);
   } catch (err) {
     throw new Error("Error fetch delete product failed!");
   }
@@ -95,4 +104,23 @@ const deleteProduct = async (formData) => {
   revalidatePath("/dashboard/products");
 };
 
-export { addUser, deleteUser, addProduct, deleteProduct };
+const findByIdProduct = async (id) => {
+  try {
+    await connectToDB();
+
+    const product = await Product.findById(id);
+
+    return product;
+  } catch (err) {
+    throw new Error("Error find by id product failed!");
+  }
+};
+
+export {
+  addUser,
+  deleteUser,
+  findByIdUser,
+  addProduct,
+  deleteProduct,
+  findByIdProduct,
+};

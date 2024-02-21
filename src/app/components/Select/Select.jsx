@@ -4,6 +4,8 @@ function Select({
   children,
   name,
   id,
+  defaultValue,
+  value,
   onChange,
   onSelect,
   placeholder,
@@ -14,6 +16,8 @@ function Select({
     <select
       name={name}
       id={id}
+      defaultValue={defaultValue}
+      value={value}
       onChange={onChange}
       onSelect={onSelect}
       placeholder={placeholder}

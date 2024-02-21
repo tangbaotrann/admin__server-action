@@ -4,6 +4,7 @@ function Textarea({
   children,
   name,
   id,
+  value,
   cols,
   rows,
   className,
@@ -14,6 +15,7 @@ function Textarea({
     <textarea
       name={name}
       id={id}
+      value={value}
       cols={cols}
       rows={rows}
       className={`${styles.customTextArea} ${className}`}

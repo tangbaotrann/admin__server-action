@@ -9,8 +9,12 @@ import Textarea from "@/app/components/Textarea/Textarea";
 import Select from "@/app/components/Select/Select";
 import Option from "@/app/components/Option/Option";
 import Button from "@/app/components/Button/Button";
+import { findByIdUser } from "@/app/utils/actions";
 
-function UserDetail() {
+async function UserDetail({ params }) {
+  const { id } = params;
+  const user = await findByIdUser(id);
+
   return (
     <div className={styles.container}>
       <Link href="/dashboard/users" className={styles.back}>
@@ -20,11 +24,11 @@ function UserDetail() {
       <div className={styles.main}>
         <div className={styles.image}>
           <Image
-            src="/noavatar.png"
+            src={user.image || "/noavatar.png"}
             alt="img-avt"
             className={styles.avatarImage}
           />
-          <span className={styles.name}>Name...</span>
+          <span className={styles.name}>{user.username}</span>
         </div>
 
         <div className={styles.inputs}>
@@ -32,26 +36,47 @@ function UserDetail() {
             <Input
               type="text"
               name="username"
+              value={user.username}
               placeholder="Enter username..."
             />
-            <Input type="text" name="email" placeholder="Enter email..." />
             <Input
               type="text"
+              name="email"
+              value={user.email}
+              placeholder="Enter email..."
+            />
+            <Input
+              type="password"
               name="password"
+              value={user.password}
               placeholder="Enter password..."
             />
-            <Input type="text" name="phone" placeholder="Enter phone..." />
+            <Input
+              type="text"
+              name="phone"
+              value={user.phone}
+              placeholder="Enter phone..."
+            />
             <Textarea
               name="address"
+              value={user.address}
               placeholder="Enter address..."
               rows={4}
             ></Textarea>
-            <Select name="isAdmin" placeholder="Choose a role...">
+            <Select
+              defaultValue={user.role}
+              name="isAdmin"
+              placeholder="Choose a role..."
+            >
               <Option value="generate">Choose a role</Option>
               <Option value={true}>Yes</Option>
               <Option value={false}>No</Option>
             </Select>
-            <Select name="status" placeholder="Choose a status...">
+            <Select
+              defaultValue={user.status}
+              name="status"
+              placeholder="Choose a status..."
+            >
               <Option value="generate">Choose a status</Option>
               <Option value={true}>Yes</Option>
               <Option value={false}>No</Option>
