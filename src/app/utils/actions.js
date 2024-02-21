@@ -7,6 +7,7 @@ import bcrypt from "bcrypt";
 import connectToDB from "./db";
 import { Product, User } from "./models";
 
+// USER
 const addUser = async (formData) => {
   const { username, email, password, phone, role, status, address } =
     Object.fromEntries(formData);
@@ -30,13 +31,28 @@ const addUser = async (formData) => {
     await newUser.save();
   } catch (err) {
     console.log("[ERROR] ->", err);
-    throw new Error(err);
+    throw new Error("Error fetch add user failed!");
   }
 
   revalidatePath("/dashboard/users");
   redirect("/dashboard/users");
 };
 
+const deleteUser = async (formData) => {
+  const { _id } = Object.fromEntries(formData);
+
+  try {
+    await connectToDB();
+    await User.findByIdAndDelete(_id);
+  } catch (err) {
+    console.log("[ERROR] ->", err);
+    throw new Error("Error fetch delete user failed!");
+  }
+
+  revalidatePath("/dashboard/users");
+};
+
+// Product
 const addProduct = async (formData) => {
   const { title, category, price, stock, color, size, desc } =
     Object.fromEntries(formData);
@@ -57,11 +73,26 @@ const addProduct = async (formData) => {
     await newProduct.save();
   } catch (err) {
     console.log("[ERROR] ->", err);
-    throw new Error(err);
+    throw new Error("Error fetch add product failed!");
   }
 
   revalidatePath("/dashboard/products");
   redirect("/dashboard/products");
 };
 
-export { addUser, addProduct };
+const deleteProduct = async (formData) => {
+  const { _id } = Object.fromEntries(formData);
+
+  try {
+    await connectToDB();
+    const prod = await Product.findByIdAndDelete(_id);
+
+    console.log("[PRODUCT DEL] ->", prod);
+  } catch (err) {
+    throw new Error("Error fetch delete product failed!");
+  }
+
+  revalidatePath("/dashboard/products");
+};
+
+export { addUser, deleteUser, addProduct, deleteProduct };

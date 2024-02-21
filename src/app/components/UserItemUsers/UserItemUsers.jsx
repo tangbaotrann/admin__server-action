@@ -1,11 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import dayjs from "dayjs";
 
 import styles from "@/app/ui/dashboard/users/Users.module.css";
 import Button from "@/app/components/Button/Button";
 import Image from "../Image/Image";
+import Form from "../Form/Form";
+import { deleteUser } from "@/app/utils/actions";
+import Input from "../Input/Input";
 
 function UserItemUsers({ user }) {
+  const handleOnSubmitDelete = (formData) => {
+    const isConfirm = confirm("Are you sure delete user?");
+
+    isConfirm && deleteUser(formData);
+  };
+
   return (
     <>
       <td>
@@ -30,7 +41,11 @@ function UserItemUsers({ user }) {
           <Link href={`/dashboard/users/${user._id}`}>
             <Button className={styles.viewBtn}>View</Button>
           </Link>
-          <Button className={styles.deleteBtn}>Delete</Button>
+
+          <Form action={handleOnSubmitDelete}>
+            <Input type="hidden" name="_id" value={user._id} />
+            <Button className={styles.deleteBtn}>Delete</Button>
+          </Form>
         </div>
       </td>
     </>

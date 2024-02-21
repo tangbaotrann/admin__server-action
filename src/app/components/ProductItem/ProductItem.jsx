@@ -1,11 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import dayjs from "dayjs";
 
 import styles from "@/app/ui/dashboard/products/Products.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
+import Form from "../Form/Form";
+import Input from "../Input/Input";
+import { deleteProduct } from "@/app/utils/actions";
 
 function ProductItem({ product }) {
+  const handleSubmitDelete = (formData) => {
+    const isConfirm = confirm("Are you sure delete product?");
+
+    isConfirm && deleteProduct(formData);
+  };
+
   return (
     <>
       <td>
@@ -30,7 +41,11 @@ function ProductItem({ product }) {
           <Link href={`/dashboard/products/${product._id}`}>
             <Button className={styles.viewBtn}>View</Button>
           </Link>
-          <Button className={styles.deleteBtn}>Delete</Button>
+
+          <Form action={handleSubmitDelete}>
+            <Input type="hidden" name="_id" value={product._id} />
+            <Button className={styles.deleteBtn}>Delete</Button>
+          </Form>
         </div>
       </td>
     </>
