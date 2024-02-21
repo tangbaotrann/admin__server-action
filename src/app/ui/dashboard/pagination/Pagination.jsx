@@ -1,9 +1,11 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 
 import styles from "./Pagination.module.css";
 import Button from "@/app/components/Button/Button";
+import constants from "@/app/utils/constants";
 
 function Pagination({ count, totalPages }) {
   const searchParams = useSearchParams();
@@ -13,7 +15,7 @@ function Pagination({ count, totalPages }) {
   const currentPage = searchParams.get("page") || 1;
   const previousPage = parseInt(currentPage) - 1;
   const nextPage = parseInt(currentPage) + 1;
-  const ITEM_PER_PAGE = 2;
+  const ITEM_PER_PAGE = constants.PAGINATION_NUMBER;
 
   const hasPrevious = ITEM_PER_PAGE * previousPage > 0;
   const hasNext = ITEM_PER_PAGE * previousPage + ITEM_PER_PAGE < count;
@@ -35,6 +37,7 @@ function Pagination({ count, totalPages }) {
         onClick={() => handleChangePage("Prev")}
         className={styles.previousBtn}
       >
+        <GrFormPrevious size={12} />
         Previous
       </Button>
       <i className={styles.pageNumber}>
@@ -46,6 +49,7 @@ function Pagination({ count, totalPages }) {
         className={styles.nextBtn}
       >
         Next
+        <GrFormNext size={12} />
       </Button>
     </div>
   );

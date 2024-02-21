@@ -11,6 +11,7 @@
     "test:ci": "jest --ci"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "dayjs": "^1.11.10",
     "mongoose": "^8.1.3",
     "next": "14.1.0",

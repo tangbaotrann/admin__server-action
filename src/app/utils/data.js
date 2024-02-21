@@ -1,9 +1,10 @@
+import constants from "./constants";
 import connectToDB from "./db";
 import { Product, User } from "./models";
 
 const fetchUsers = async (qSearch, pagination) => {
   const regex = new RegExp(qSearch);
-  const ITEM_PER_PAGE = 2;
+  const ITEM_PER_PAGE = constants.PAGINATION_NUMBER;
 
   try {
     await connectToDB();
@@ -29,7 +30,7 @@ const fetchUsers = async (qSearch, pagination) => {
 
 const fetchProducts = async (qSearch, pagination) => {
   const regex = new RegExp(qSearch);
-  const ITEM_PER_PAGE = 2;
+  const ITEM_PER_PAGE = constants.PAGINATION_NUMBER;
 
   try {
     await connectToDB();

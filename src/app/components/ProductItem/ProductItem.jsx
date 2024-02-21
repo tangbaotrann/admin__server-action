@@ -1,8 +1,9 @@
+import Link from "next/link";
+import dayjs from "dayjs";
+
 import styles from "@/app/ui/dashboard/products/Products.module.css";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
-import Link from "next/link";
-import dayjs from "dayjs";
 
 function ProductItem({ product }) {
   return (
@@ -18,7 +19,7 @@ function ProductItem({ product }) {
         </div>
       </td>
       <td>{product.desc}</td>
-      <td>$ {product.price}</td>
+      <td>${product.price}</td>
       <td>
         {dayjs(product.createdAt).format("DD/MM/YYYY") ||
           dayjs(new Date()).format("DD/MM/YYYY")}
@@ -26,7 +27,7 @@ function ProductItem({ product }) {
       <td>{product.stock}</td>
       <td>
         <div className={styles.actions}>
-          <Link href="/dashboard/products/id">
+          <Link href={`/dashboard/products/${product._id}`}>
             <Button className={styles.viewBtn}>View</Button>
           </Link>
           <Button className={styles.deleteBtn}>Delete</Button>

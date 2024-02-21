@@ -8,6 +8,7 @@ import Textarea from "@/app/components/Textarea/Textarea";
 import Form from "@/app/components/Form/Form";
 import Option from "@/app/components/Option/Option";
 import Button from "@/app/components/Button/Button";
+import { addProduct } from "@/app/utils/actions";
 
 function AddProducts() {
   return (
@@ -16,7 +17,7 @@ function AddProducts() {
         <IoIosArrowBack /> Back to products
       </Link>
 
-      <Form action="" className={styles.form}>
+      <Form action={addProduct} className={styles.form}>
         <div className={styles.row}>
           <Input
             className={styles.input}
@@ -62,7 +63,7 @@ function AddProducts() {
         <Textarea
           cols={30}
           rows={16}
-          name="description"
+          name="desc"
           placeholder="Enter description..."
         ></Textarea>
 

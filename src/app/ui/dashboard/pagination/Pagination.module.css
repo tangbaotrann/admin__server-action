@@ -5,11 +5,10 @@
     gap: 14px;
 }
 
-.previousBtn {
-    padding: 6px;
-}
-
+.previousBtn,
 .nextBtn {
+    display: flex;
+    align-items: center;
     padding: 6px;
 }
 

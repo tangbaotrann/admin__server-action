@@ -8,6 +8,7 @@ import Select from "@/app/components/Select/Select";
 import Option from "@/app/components/Option/Option";
 import Textarea from "@/app/components/Textarea/Textarea";
 import Button from "@/app/components/Button/Button";
+import { addUser } from "@/app/utils/actions";
 
 function AddUsers() {
   return (
@@ -16,7 +17,7 @@ function AddUsers() {
         <IoIosArrowBack /> Back to users
       </Link>
 
-      <Form action="" className={styles.form}>
+      <Form action={addUser} className={styles.form}>
         <div className={styles.row}>
           <Input
             type="text"
@@ -31,7 +32,7 @@ function AddUsers() {
             placeholder="Enter email..."
           />
           <Input
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="Enter password..."
@@ -50,7 +51,7 @@ function AddUsers() {
             <Option value={true}>Yes</Option>
             <Option value={false}>No</Option>
           </Select>
-          <Select id="role" name="role" placeholder="Choose a status">
+          <Select id="status" name="status" placeholder="Choose a status">
             <Option value="isActive">Is Active?</Option>
             <Option value={true}>Yes</Option>
             <Option value={false}>No</Option>
