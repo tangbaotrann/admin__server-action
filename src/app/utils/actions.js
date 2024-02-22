@@ -63,6 +63,31 @@ const findByIdUser = async (id) => {
   }
 };
 
+const updateUser = async (formData) => {
+  const { _id, username, email, password, phone, role, status, address } =
+    Object.fromEntries(formData);
+  try {
+    await connectToDB();
+
+    const newInfoUser = await findByIdUser(_id);
+
+    newInfoUser.username = username;
+    newInfoUser.email = email;
+    newInfoUser.password = password;
+    newInfoUser.phone = phone;
+    newInfoUser.role = role;
+    newInfoUser.status = status;
+    newInfoUser.address = address;
+
+    await newInfoUser.save();
+  } catch (err) {
+    throw new Error("Error update user failed!");
+  }
+
+  revalidatePath("/dashboard/users");
+  redirect("/dashboard/users");
+};
+
 // Product
 const addProduct = async (formData) => {
   const { title, category, price, stock, color, size, desc } =
@@ -116,11 +141,45 @@ const findByIdProduct = async (id) => {
   }
 };
 
+const updateProduct = async (formData) => {
+  const { _id, title, category, price, stock, color, size, desc } =
+    Object.fromEntries(formData);
+  try {
+    await connectToDB();
+
+    const updateFields = {
+      title,
+      category,
+      price,
+      stock,
+      color,
+      size,
+      desc,
+    };
+
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
+
+    await Product.findByIdAndUpdate(_id, updateFields);
+  } catch (err) {
+    throw new Error("Error update product failed!");
+  }
+
+  revalidatePath("/dashboard/products");
+  redirect("/dashboard/products");
+};
+
 export {
+  // User
   addUser,
   deleteUser,
   findByIdUser,
+  updateUser,
+  // Product
   addProduct,
   deleteProduct,
   findByIdProduct,
+  updateProduct,
 };

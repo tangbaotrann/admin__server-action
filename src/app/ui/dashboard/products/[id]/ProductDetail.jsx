@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -9,11 +11,17 @@ import Select from "@/app/components/Select/Select";
 import Textarea from "@/app/components/Textarea/Textarea";
 import Input from "@/app/components/Input/Input";
 import Form from "@/app/components/Form/Form";
-import { findByIdProduct } from "@/app/utils/actions";
+import { findByIdProduct, updateProduct } from "@/app/utils/actions";
 
 async function ProductDetail({ params }) {
   const { id } = params;
   const product = await findByIdProduct(id);
+
+  const handleSubmitUpdate = (formData) => {
+    const isConfirm = confirm("Are you sure update product?");
+
+    product && isConfirm && updateProduct(formData);
+  };
 
   return (
     <div className={styles.container}>
@@ -32,11 +40,17 @@ async function ProductDetail({ params }) {
         </div>
 
         <div className={styles.inputs}>
-          <Form action="" className={styles.form}>
+          <Form action={handleSubmitUpdate} className={styles.form}>
+            <Input
+              type="hidden"
+              name="_id"
+              defaultValue={product._id}
+              placeholder="Enter title..."
+            />
             <Input
               type="text"
               name="title"
-              value={product.title}
+              defaultValue={product.title}
               placeholder="Enter title..."
             />
             <Select
@@ -54,30 +68,30 @@ async function ProductDetail({ params }) {
             <Input
               type="number"
               name="price"
-              value={product.price}
+              defaultValue={product.price}
               placeholder="Enter price..."
             />
             <Input
               type="number"
               name="stock"
-              value={product.stock}
+              defaultValue={product.stock}
               placeholder="Enter stock..."
             />
             <Input
               type="text"
               name="color"
-              value={product.color}
+              defaultValue={product.color}
               placeholder="Enter color..."
             />
             <Input
               type="text"
               name="size"
-              value={product.size}
+              defaultValue={product.size}
               placeholder="Enter size..."
             />
             <Textarea
               name="description"
-              value={product.desc}
+              defaultValue={product.desc}
               rows={4}
               placeholder="Enter description..."
             ></Textarea>

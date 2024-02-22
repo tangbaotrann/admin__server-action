@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 
@@ -9,11 +11,17 @@ import Textarea from "@/app/components/Textarea/Textarea";
 import Select from "@/app/components/Select/Select";
 import Option from "@/app/components/Option/Option";
 import Button from "@/app/components/Button/Button";
-import { findByIdUser } from "@/app/utils/actions";
+import { findByIdUser, updateUser } from "@/app/utils/actions";
 
 async function UserDetail({ params }) {
   const { id } = params;
   const user = await findByIdUser(id);
+
+  const handleSubmitUpdate = (formData) => {
+    const isConfirm = confirm("Are you sure update user?");
+
+    user && isConfirm && updateUser(formData);
+  };
 
   return (
     <div className={styles.container}>
@@ -32,40 +40,46 @@ async function UserDetail({ params }) {
         </div>
 
         <div className={styles.inputs}>
-          <Form action="" className={styles.form}>
+          <Form action={handleSubmitUpdate} className={styles.form}>
+            <Input
+              type="hidden"
+              name="_id"
+              defaultValue={user._id}
+              placeholder="Enter username..."
+            />
             <Input
               type="text"
               name="username"
-              value={user.username}
+              defaultValue={user.username}
               placeholder="Enter username..."
             />
             <Input
               type="text"
               name="email"
-              value={user.email}
+              defaultValue={user.email}
               placeholder="Enter email..."
             />
             <Input
               type="password"
               name="password"
-              value={user.password}
+              defaultValue={user.password}
               placeholder="Enter password..."
             />
             <Input
               type="text"
               name="phone"
-              value={user.phone}
+              defaultValue={user.phone}
               placeholder="Enter phone..."
             />
             <Textarea
               name="address"
-              value={user.address}
+              defaultValue={user.address}
               placeholder="Enter address..."
               rows={4}
             ></Textarea>
             <Select
               defaultValue={user.role}
-              name="isAdmin"
+              name="role"
               placeholder="Choose a role..."
             >
               <Option value="generate">Choose a role</Option>

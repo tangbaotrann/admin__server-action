@@ -4,6 +4,7 @@ function Input({
   type,
   name,
   id,
+  defaultValue,
   value,
   onChange,
   placeholder,
@@ -15,6 +16,7 @@ function Input({
       type={type}
       name={name}
       id={id}
+      defaultValue={defaultValue}
       value={value}
       onChange={onChange}
       placeholder={placeholder}
