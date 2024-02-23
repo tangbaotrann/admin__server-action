@@ -29,3 +29,8 @@
     color: var(--text);
     background-color: teal;
 }
+
+.error {
+    text-align: center;
+    color: red;
+}

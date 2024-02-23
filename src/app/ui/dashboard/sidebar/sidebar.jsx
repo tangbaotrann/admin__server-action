@@ -14,6 +14,8 @@ import {
 import styles from "../sidebar/sidebar.module.css";
 import MenuLink from "./menuLink/menuLink";
 import Image from "@/app/components/Image/Image";
+import Form from "@/app/components/Form/Form";
+import { auth, signOut } from "@/auth";
 
 const listMenu = [
   {
@@ -78,18 +80,25 @@ const listMenu = [
   },
 ];
 
-function Sidebar() {
+async function Sidebar() {
+  const { user } = await auth();
+
+  const handleLogout = async () => {
+    "use server";
+    await signOut();
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.user}>
         <Image
           className={styles.avatarImage}
-          src="/noavatar.png"
+          src={user.image || "/noavatar.png"}
           alt="img-avatar"
         />
 
         <div className={styles.userDetail}>
-          <span className={styles.username}>baotrann</span>
+          <span className={styles.username}>{user.name || ""}</span>
           <span className={styles.userTitle}>administrator</span>
         </div>
       </div>
@@ -106,9 +115,11 @@ function Sidebar() {
         ))}
       </ul>
 
-      <button className={styles.logout}>
-        <MdLogout /> Logout
-      </button>
+      <Form action={handleLogout}>
+        <button className={styles.logout}>
+          <MdLogout /> Logout
+        </button>
+      </Form>
     </div>
   );
 }

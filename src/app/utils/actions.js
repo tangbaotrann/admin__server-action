@@ -6,6 +6,7 @@ import bcrypt from "bcrypt";
 
 import connectToDB from "./db";
 import { Product, User } from "./models";
+import { signIn } from "../../auth";
 
 // USER
 const addUser = async (formData) => {
@@ -171,6 +172,23 @@ const updateProduct = async (formData) => {
   redirect("/dashboard/products");
 };
 
+// Login
+const loginAuthenticate = async (formData) => {
+  const { username, password } = Object.fromEntries(formData);
+
+  try {
+    await signIn("credentials", {
+      username: username,
+      password: password,
+    });
+  } catch (err) {
+    if (err.message.includes("CredentialsSignin")) {
+      return "Wrong Credentials";
+    }
+    throw err;
+  }
+};
+
 export {
   // User
   addUser,
@@ -182,4 +200,6 @@ export {
   deleteProduct,
   findByIdProduct,
   updateProduct,
+  // Login authenticate
+  loginAuthenticate,
 };
